@@ -1,57 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './features/header/Header';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './components/GlobalStyles';
+import { lightThemeColors, darkThemeColors } from './assets/colors';
+import WebsiteContent from './components/WebsiteContent';
+import styled from 'styled-components';
+import GridCell from './components/GridCell';
+import Filters from './features/filters/Filters';
+import Products from './features/products/Products';
+
+const ContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 16px;
+  grid-template-areas: 'filters-section products-section other-section';
+  padding: 24px;
+`;
 
 function App() {
+  const [theme] = useState('light');
+
+  // ENHANCEMENT: we could implement a theme switch
+  // useEffect(() => {
+  //   setTheme('dark');
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ThemeProvider
+      theme={theme === 'light' ? lightThemeColors : darkThemeColors}
+    >
+      <GlobalStyles />
+      <div className="App">
+        <Header />
+        <WebsiteContent>
+          <ContentGrid>
+            <GridCell area="filters-section">
+              <Filters />
+            </GridCell>
+            <GridCell area="products-section">
+              <Products />
+            </GridCell>
+          </ContentGrid>
+        </WebsiteContent>
+      </div>
+    </ThemeProvider>
   );
 }
 
