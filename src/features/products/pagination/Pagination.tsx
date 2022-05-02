@@ -5,7 +5,7 @@ import arrow from './arrow.svg';
 import arrowActive from './arrowActive.svg';
 
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { selectProducts, productPages } from '../productsSlice';
+import { productPages } from '../productsSlice';
 import { sagaActions } from '../../../app/sagaActions';
 
 import { ThemedComponent } from '../../../assets/colors';

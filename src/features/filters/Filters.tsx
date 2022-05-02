@@ -10,12 +10,9 @@ import {
   selectFilterBrands,
   selectFilterTags,
   selectSortingFilter,
-  setActiveBrandsFilter,
-  setSortingFilter,
 } from '../products/productsSlice';
 
 import checkboxChecked from './checkbox.svg';
-import Select from 'react-select';
 
 interface FilterLayoutProps {
   title: string;

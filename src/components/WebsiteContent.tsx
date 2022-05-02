@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Wrapper from './Wrapper';
 import Container from './Container';
 
