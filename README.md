@@ -1,6 +1,22 @@
-# Getting Started with Create React App
+# Intro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template. It uses [redux-saga](https://redux-saga.js.org/) to handle asynchronous things from Redux and uses a version of json-sever through GraphQL.
+
+# Start the project
+
+run `yarn start` to start React server
+run `yarn mock:server` to start the json-server. Note: json server must be installed globally
+
+# E2E tests
+
+For time saving I've added only the test for the main reducer on each slice, eventually when I get more time I could add a test for each reducer.
+
+# Future Improvements
+
+While building the app some things that could be done to better improve my implementation can be:
+
+- Add usage of GraphQL (can be used in combination of json-server)
+- I added a context provider with a Theme, even tough I didn't have time to implement it now, a switch between themes could be added in the future.
 
 ## Available Scripts
 
@@ -28,19 +44,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
