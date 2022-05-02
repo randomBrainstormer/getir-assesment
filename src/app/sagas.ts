@@ -36,7 +36,10 @@ type ProductAPICall = {
 
 type ProductAPIResponse<T> = { count: number | null; data: T[] };
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3001'
+    : 'https://getir-api-test.herokuapp.com/';
 
 // function to fetch product data
 const callAPI = async <T>({
