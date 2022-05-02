@@ -3,8 +3,6 @@ import { RootState } from '../../app/store';
 import { Product, ProductSortFilter, ProductType } from '../../types';
 
 export interface ProductsState {
-  value: number;
-  status: 'idle' | 'loading' | 'failed';
   products: Product[];
   isProductListLoading: boolean;
   productPages: number;
@@ -17,8 +15,6 @@ export interface ProductsState {
 }
 
 const initialState: ProductsState = {
-  value: 0,
-  status: 'idle',
   products: [],
   isProductListLoading: false,
   productPages: 0,
