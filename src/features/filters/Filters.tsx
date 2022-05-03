@@ -11,7 +11,6 @@ import {
   selectFilterTags,
   selectSortingFilter,
 } from '../products/productsSlice';
-
 import checkboxChecked from './checkbox.svg';
 
 interface FilterLayoutProps {
@@ -20,20 +19,20 @@ interface FilterLayoutProps {
   maxHeight?: number;
 }
 
-const FilterLayoutAlignment = styled.div<{ maxHeight?: number }>`
+const FilterLayoutAlignment = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   padding-bottom: 24px;
-  overflow: scroll;
-  ${(props) => props?.maxHeight && `max-height: ${props.maxHeight}px;`}
 `;
 
 const FilterLayoutTitle = styled(TextElement)`
   padding-bottom: 12px;
 `;
 
-const FilterLayoutContent = styled.div`
+const FilterLayoutContent = styled.div<{ maxHeight?: number }>`
   background-color: ${(props) => props.theme.backgroundColorContrast};
   padding: 24px;
+  ${(props) => props?.maxHeight && `max-height: ${props.maxHeight}px;`}
+  overflow: scroll;
 `;
 
 const FilterLayout: React.FC<FilterLayoutProps> = ({
@@ -42,11 +41,13 @@ const FilterLayout: React.FC<FilterLayoutProps> = ({
   maxHeight,
 }) => {
   return (
-    <FilterLayoutAlignment maxHeight={maxHeight}>
+    <FilterLayoutAlignment>
       <FilterLayoutTitle size={13} color="gray" bold={true}>
         {title}
       </FilterLayoutTitle>
-      <FilterLayoutContent>{children}</FilterLayoutContent>
+      <FilterLayoutContent maxHeight={maxHeight}>
+        {children}
+      </FilterLayoutContent>
     </FilterLayoutAlignment>
   );
 };
@@ -303,6 +304,7 @@ const TagsFilters = () => {
 
 const FiltersWrapper = styled.div`
   grid-area: filters-section;
+  width: 100%;
 `;
 
 const Filters = () => {

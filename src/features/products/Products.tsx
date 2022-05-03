@@ -8,24 +8,32 @@ import { selectProducts, isProductListLoading } from './productsSlice';
 import { sagaActions } from '../../app/sagaActions';
 import FilterByProductType from '../filters/Types';
 import ProductTemplate from './ProductTemplate';
+import { respondTo } from '../../assets/mixins';
 
 const ProductsSection = styled.section`
   grid-area: products-section;
+  width: 100%;
 `;
 
 const ProductListPanel = styled.div`
-  padding: 22px 20px;
   background-color: ${(props) => props.theme.backgroundColorContrast};
-
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 20px 8px;
-  grid-template-areas:
-    'filters-section products-section . .'
-    '. . . .'
-    '. . . .'
-    '. . . .';
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(16, 1fr);
+  gap: 12px 0px;
+
+  ${respondTo.sm`
+    padding: 22px 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(8, 1fr);
+    gap: 18px 8px;
+  `}
+
+  ${respondTo.md`
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 20px 8px;
+  `}
 `;
 
 const CustomLoader = styled(Loader)`

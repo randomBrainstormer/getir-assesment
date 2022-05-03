@@ -4,13 +4,20 @@ import GridCell from '../../components/GridCell';
 import styled from 'styled-components';
 import WebsiteContent from '../../components/WebsiteContent';
 import CartSection from '../cart/CartSection';
+import { respondTo } from '../../assets/mixins';
 
 const StyledHeader = styled.header`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: '. header-logo header-menu';
+  grid-template-areas: 'header-logo header-menu';
+
+  ${respondTo.sm`
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: '. header-logo header-menu';
+  `}
 `;
 
 const HeaderLogo = styled.img.attrs((props) => ({

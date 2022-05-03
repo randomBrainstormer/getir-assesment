@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { Product, ProductType } from '../../types';
 import { addItemToCart } from '../cart/cartSlice';
 import CurrencyText from '../../components/CurrencyText';
+import { respondTo } from '../../assets/mixins';
 
 interface ProductProps {
   item: Product;
@@ -22,9 +23,18 @@ const ProductInfo = styled.div`
 const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 4px 12px;
+
+  ${respondTo.sm`
+    padding: 0;
+  `}
 `;
 
-const ImageCard = styled.div``;
+const ImageCard = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`;
 
 const ProductImg = styled.img.attrs<ProductImgProps>(({ type }) => ({
   src: type === ProductType.MUG ? mug : shirt,

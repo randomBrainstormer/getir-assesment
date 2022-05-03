@@ -8,6 +8,9 @@ interface GridCellProps {
  */
 const GridCell = styled.div<GridCellProps>`
   grid-area: ${({ area }) => area};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default GridCell;

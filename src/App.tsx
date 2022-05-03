@@ -8,14 +8,29 @@ import styled from 'styled-components';
 import GridCell from './components/GridCell';
 import Filters from './features/filters/Filters';
 import Products from './features/products/Products';
+import { respondTo } from './assets/mixins';
 
 const ContentGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 16px;
-  grid-template-areas: 'filters-section products-section other-section';
-  padding: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 24px 12px;
+
+  ${respondTo.sm`
+  flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 16px;
+    grid-template-areas: 'filters-section products-section';
+    padding: 12px;
+  `}
+  ${respondTo.md`
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 16px;
+    grid-template-areas: 'filters-section products-section other-section';
+    padding: 24px;
+  `}
 `;
 
 function App() {
